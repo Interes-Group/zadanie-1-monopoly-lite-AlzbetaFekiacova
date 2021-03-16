@@ -19,32 +19,37 @@ public class Property extends Square {
         owner = null;
     }
 
+
+    private void noOwnerAction(Player player) {
+        if (player.getMoney() - price >= 0) {
+            System.out.println("You have enough money you can buy this property");
+            System.out.println("Price is " + price + "$");
+            System.out.println("You have " + player.getMoney() + "$");
+            int option = KeyboardInput.readBuyOrNotToBuy();
+
+            if (option == 1) {
+                player.setMoney(player.getMoney() - price);
+                this.owner = player;
+                player.addProperty(this);
+                System.out.println("Congrats, you now own new property, your new money is " + player.getMoney() + "$");
+
+            } else {
+                System.out.println("Nice, safe money for later");
+
+            }
+        } else {
+            System.out.println("Sorry you do not have enough money, you cannot buy this property.");
+        }
+
+    }
+
     @Override
     public void action(Player player) {
         super.action(player);
 
         if (this.owner == null) {
-            if (player.getMoney() - price >= 0) {
-                //int option = KeyboardInput.readInt("If you want to buy press 1 else press 0");
-                System.out.println("You have enough money you can buy this property");
-                System.out.println("Price is " + price + "$");
-                System.out.println("You have " + player.getMoney()+"$");
-                int option = KeyboardInput.readBuyOrNotToBuy();
+            noOwnerAction(player);
 
-                if (option == 1) {
-                    player.setMoney(player.getMoney() - price);
-                    owner = player;
-                    player.addProperty(this);
-                    System.out.println("Congrats, you now own new property, your new money is " + player.getMoney() + "$");
-
-                } else {
-                    System.out.println("Nice, safe money for later");
-
-                }
-
-            } else {
-                System.out.println("Sorry you do not have enough money, you cannot buy this property.");
-            }
         } else if (this.owner.equals(player)) {
             System.out.println("You already own this property, well done!");
         } else {
@@ -70,21 +75,6 @@ public class Property extends Square {
         this.name = name;
     }
 
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
-    public int getFee() {
-        return fee;
-    }
-
-    public void setFee(int fee) {
-        this.fee = fee;
-    }
 
     public Player getOwner() {
         return owner;

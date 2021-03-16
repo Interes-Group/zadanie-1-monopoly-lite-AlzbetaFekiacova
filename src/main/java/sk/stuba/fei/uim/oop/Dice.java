@@ -3,11 +3,7 @@ package sk.stuba.fei.uim.oop;
 public class Dice {
     private int value;
 
-    public int getValue() {
-        return value;
-    }
-
-    public int roll(){
+    public int roll() {
         value = (int) ((Math.random() * (5)) + 1);
         return value;
     }

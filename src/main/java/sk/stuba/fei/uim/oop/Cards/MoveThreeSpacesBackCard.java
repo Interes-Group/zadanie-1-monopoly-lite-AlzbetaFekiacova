@@ -3,15 +3,17 @@ package sk.stuba.fei.uim.oop.Cards;
 import sk.stuba.fei.uim.oop.Player;
 
 public class MoveThreeSpacesBackCard extends Card{
+    private int value;
     public MoveThreeSpacesBackCard(String name){
 
         super(name);
+        value = 3;
     }
 
     public void action(Player player) {
         super.action(player);
         int position = player.getPosition();
-        position = (position - 3 ) % 24;
+        position = (position - value ) % 24;
         if (position < 0){
             position = 0;
         }

@@ -3,9 +3,10 @@ package sk.stuba.fei.uim.oop.Cards;
 import sk.stuba.fei.uim.oop.Player;
 
 public class LoseThousandCard extends Card{
-    private int value = 1000;
+    private int value;
     public LoseThousandCard(String name){
         super(name);
+        value = 1000;
     }
     @Override
     public void action(Player player) {

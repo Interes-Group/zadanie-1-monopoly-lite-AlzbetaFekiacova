@@ -27,43 +27,56 @@ public class Player {
 
     }
 
+    private void notImprisonedTurn(Board board) {
+        Dice dice = new Dice();
+        int rolled = dice.roll();
+        System.out.println(dice.toString());
 
-    public void turn( Board board, Jail jail) {
-        System.out.printf("It is player %s's turn%n",name);
+        int position = this.position;
+        position += rolled;
+        position = position % 24;
+        this.position = position;
+        Square square = board.getSquares().get(position);
+        square.action(this);
+
+
+        while (true) {
+            if (position != this.position) {
+
+                square = board.getSquares().get(this.position);
+                square.action(this);
+                position = this.position;
+            } else {
+                break;
+            }
+        }
+    }
+
+    public void displayProperties() {
+        if (properties.size() > 0) {
+            System.out.println("You own these properties:");
+
+            for (Property property : properties) {
+                System.out.println(property.getName());
+            }
+        } else {
+            System.out.println("You do not have any property yet.");
+        }
+
+    }
+
+    public void turn(Board board, Jail jail) {
+        System.out.printf("It is player %s's turn%n", name);
         System.out.println("You have " + money + "$");
         System.out.println("Your position is " + board.getSquares().get(position).getName() + " square");
-
+        displayProperties();
+        System.out.println();
         if (!isImprisoned) {
-            Dice dice = new Dice();
-            int rolled = dice.roll();
-            System.out.println(dice.toString());
-
-            int position = this.position;
-            position += rolled;
-            position = position % 24;
-            this.position = position;
-            Square square = board.getSquares().get(position);
-            square.action(this);
-
-
-            while (true) {
-                if (position != this.position) {
-
-                    square = board.getSquares().get(this.position);
-                    square.action(this);
-                    position = this.position;
-                } else {
-                    break;
-                }
-            }
+            notImprisonedTurn(board);
         } else {
             System.out.println("Sorry you are in prison, you have to wait");
             jail.oneRoundPassed(this);
-
-
         }
-
-
     }
 
 
@@ -77,7 +90,7 @@ public class Player {
         if (money < 0) {
             money = 0;
         }
-        System.out.println(getName() + " has now " + getMoney()+"$");
+        System.out.println(getName() + " has now " + getMoney() + "$");
     }
 
     public void addProperty(Property property) {
@@ -118,10 +131,10 @@ public class Player {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Player player = (Player) o;
-        return position == player.position && money == player.money && isImprisoned == player.isImprisoned && Objects.equals(name, player.name)  && Objects.equals(properties, player.properties);
+        return position == player.position && money == player.money && isImprisoned == player.isImprisoned && Objects.equals(name, player.name) && Objects.equals(properties, player.properties);
     }
 
-        public void die(ArrayList<Square> properties) {
+    public void die(ArrayList<Square> properties) {
         System.out.println(name + " is dead");
         for (Square prop : properties) {
             if (prop instanceof Property) {

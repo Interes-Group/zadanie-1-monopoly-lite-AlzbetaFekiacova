@@ -7,15 +7,15 @@ import java.util.ArrayList;
 
 public class Chance extends Square {
 
-    private ArrayList<Card> unusedCards = new ArrayList<>();
+    private ArrayList<Card> unusedCards;
     private ArrayList<Card> usedCards;
 
-    public Chance(String name, int position, ArrayList <Card> cards) {
+    public Chance(String name, int position, ArrayList<Card> cards) {
         super(name, position);
-        this.unusedCards.addAll(cards);
+        unusedCards = new ArrayList<>();
+        unusedCards.addAll(cards);
         usedCards = new ArrayList<>();
     }
-
 
 
     @Override
@@ -24,12 +24,12 @@ public class Chance extends Square {
         playCard(player);
     }
 
-    public void playCard(Player player){
+    public void playCard(Player player) {
         Card card = unusedCards.get(0);
         card.action(player);
         unusedCards.remove(card);
         usedCards.add(card);
-        if(unusedCards.size() == 0){
+        if (unusedCards.size() == 0) {
             unusedCards.addAll(usedCards);
             usedCards.clear();
         }

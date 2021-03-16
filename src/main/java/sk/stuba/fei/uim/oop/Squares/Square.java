@@ -7,8 +7,6 @@ public class Square {
     private String name;
     private int position;
 
-    public Square(){}
-
     public Square(String name, int position) {
         this.name = name;
         this.position = position;
@@ -35,7 +33,7 @@ public class Square {
         return "You stepped on " + name + " square";
     }
 
-    public void action(Player player){
+    public void action(Player player) {
         System.out.println(toString());
     }
 }
