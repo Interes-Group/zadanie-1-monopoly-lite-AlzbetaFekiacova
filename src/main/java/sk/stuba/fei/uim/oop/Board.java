@@ -4,6 +4,7 @@ import sk.stuba.fei.uim.oop.Cards.*;
 import sk.stuba.fei.uim.oop.Squares.*;
 
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Board {
 
@@ -20,13 +21,13 @@ public class Board {
         return squares;
     }
 
-    private void addProperties(int index, int end, int squareIndex, int[] prices, int[]fees, String[] propertyNames){
+    private void addProperties(AtomicInteger index, int end, AtomicInteger squareIndex, int[] prices, int[] fees, String[] propertyNames) {
         Property property;
-        while(index < end){
-            property = new Property(squareIndex, propertyNames[index], prices[index], fees[index]);
+        while (index.get() < end) {
+            property = new Property(squareIndex.get(), propertyNames[index.get()], prices[index.get()], fees[index.get()]);
             squares.add(property);
-            squareIndex++;
-            index++;
+            squareIndex.incrementAndGet();
+            index.incrementAndGet();
         }
     }
 
@@ -45,71 +46,62 @@ public class Board {
         SkipOneRoundCard skipOneRoundCard = new SkipOneRoundCard("Skip one round");
         cards = new ArrayList<>(5);
         cards.add(earnThousandCard);
+        cards.add(skipOneRoundCard);
         cards.add(moveThreeSpacesBackCard);
         cards.add(loseThousandCard);
-        cards.add(skipOneRoundCard);
+
         cards.add(moveThreeSpacesForwardCard);
 
 
-        int propertyIndex = 0;
-        int squareIndex = 0;
-        Start start = new Start("Start", squareIndex);
+        AtomicInteger propertyIndex = new AtomicInteger(0);
+        AtomicInteger squareIndex = new AtomicInteger(0);
+        Start start = new Start("Start", squareIndex.get());
         Chance chance;
-        squareIndex++;
+        squareIndex.incrementAndGet();
         squares.add(start);
 
-        addProperties(propertyIndex, propertyIndex+2, squareIndex, prices, fees, propertyNames);
-        propertyIndex += 2;
-        squareIndex += 2;
-        chance = new Chance("Chance", squareIndex, cards);
+        addProperties(propertyIndex, propertyIndex.get() + 2, squareIndex, prices, fees, propertyNames);
+
+        chance = new Chance("Chance", squareIndex.get(), cards);
         squares.add(chance);
-        squareIndex++;
-        addProperties(propertyIndex, propertyIndex + 2, squareIndex, prices, fees, propertyNames);
-        squareIndex += 2;
-        propertyIndex += 2;
+        squareIndex.incrementAndGet();
+        addProperties(propertyIndex, propertyIndex.get() + 2, squareIndex, prices, fees, propertyNames);
+
         squares.add(jail);
-        squareIndex++;
+        squareIndex.incrementAndGet();
 
-        addProperties(propertyIndex, propertyIndex + 2, squareIndex,  prices, fees, propertyNames);
-        squareIndex += 2;
-        propertyIndex += 2;
-        chance = new Chance("Chance", squareIndex, cards);
+        addProperties(propertyIndex, propertyIndex.get() + 2, squareIndex, prices, fees, propertyNames);
+
+        chance = new Chance("Chance", squareIndex.get(), cards);
         squares.add(chance);
-        squareIndex++;
+        squareIndex.incrementAndGet();
 
-        addProperties(propertyIndex, propertyIndex + 2, squareIndex,  prices, fees, propertyNames);
-        squareIndex += 2;
-        propertyIndex += 2;
-        Police police = new Police("police", squareIndex, jail);
+        addProperties(propertyIndex, propertyIndex.get() + 2, squareIndex, prices, fees, propertyNames);
+
+        Police police = new Police("police", squareIndex.get(), jail);
         squares.add(police);
-        squareIndex++;
+        squareIndex.incrementAndGet();
 
-        addProperties(propertyIndex, propertyIndex +2,squareIndex,  prices, fees, propertyNames);
-        squareIndex += 2;
-        propertyIndex += 2;
-        //chance.setPosition(propertyIndex);
-        chance = new Chance("Chance", squareIndex, cards);
+        addProperties(propertyIndex, propertyIndex.get() + 2, squareIndex, prices, fees, propertyNames);
+
+        chance = new Chance("Chance", squareIndex.get(), cards);
         squares.add(chance);
-        squareIndex++;
+        squareIndex.incrementAndGet();
 
-        addProperties(propertyIndex, propertyIndex + 2, squareIndex, prices, fees, propertyNames);
-        squareIndex += 2;
-        propertyIndex += 2;
+        addProperties(propertyIndex, propertyIndex.get() + 2, squareIndex, prices, fees, propertyNames);
 
-        Tax tax = new Tax("tax", squareIndex);
+        Tax tax = new Tax("tax", squareIndex.get());
 
         squares.add(tax);
-        squareIndex++;
+        squareIndex.incrementAndGet();
 
-        addProperties(propertyIndex, propertyIndex+3, squareIndex, prices, fees, propertyNames);
-        squareIndex += 3;
-        propertyIndex += 3;
-        //chance.setPosition(propertyIndex);
-        chance = new Chance("Chance", squareIndex, cards);
+        addProperties(propertyIndex, propertyIndex.get() + 3, squareIndex, prices, fees, propertyNames);
+
+        chance = new Chance("Chance", squareIndex.get(), cards);
         squares.add(chance);
-        squareIndex++;
+        squareIndex.incrementAndGet();
 
-        Property property = new Property(squareIndex, propertyNames[propertyIndex], prices[propertyIndex], fees[propertyIndex]);
+        Property property = new Property(squareIndex.get(), propertyNames[propertyIndex.get()], prices[propertyIndex.get()], fees[propertyIndex.get()]);
         squares.add(property);
 
     }
