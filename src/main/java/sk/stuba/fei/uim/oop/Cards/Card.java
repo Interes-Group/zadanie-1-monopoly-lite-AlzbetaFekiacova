@@ -1,7 +1,7 @@
 package sk.stuba.fei.uim.oop.Cards;
 
 
-import sk.stuba.fei.uim.oop.Player;
+import sk.stuba.fei.uim.oop.other.Player;
 
 public class Card {
     private String name;

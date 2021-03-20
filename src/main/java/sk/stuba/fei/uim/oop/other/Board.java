@@ -1,4 +1,5 @@
-package sk.stuba.fei.uim.oop;
+package sk.stuba.fei.uim.oop.other;
+
 
 import sk.stuba.fei.uim.oop.Cards.*;
 import sk.stuba.fei.uim.oop.Squares.*;
@@ -34,35 +35,20 @@ public class Board {
     private void buildBoard(Jail jail) {
         String[] propertyNames = {"Hotel", "Ice cream shop", "Garage", "Inn", "Gardens", "Park", "Swimming pool", "Disneyland",
                 "Lego land", "Water Plant", "Wind mill", "Bakery", "Fire station", "Pharmacy", "Flower shop", "Apartment house"};
-        int[] prices = {10000, 5000, 7000, 8000, 4000, 10000, 7500, 12000, 12000, 13000, 12000, 7500, 10000, 8000, 7500, 12000};
+        int[] prices = {8000, 3000, 4000, 2500, 2000, 5000, 3500, 5500, 6000, 7500, 6000, 2500, 6000, 4000, 2500, 6000};
         int[] fees = {1500, 500, 2000, 1000, 500, 1500, 500, 1500, 1500, 2000, 2000, 500, 500, 500, 500, 1500};
 
-
-        ArrayList<Card> cards;
-        EarnThousandCard earnThousandCard = new EarnThousandCard("Earn Thousand ");
-        MoveThreeSpacesForwardCard moveThreeSpacesForwardCard = new MoveThreeSpacesForwardCard("Move three spaces forward ");
-        MoveThreeSpacesBackCard moveThreeSpacesBackCard = new MoveThreeSpacesBackCard("Move three spaces back");
-        LoseThousandCard loseThousandCard = new LoseThousandCard("Lose thousand ");
-        SkipOneRoundCard skipOneRoundCard = new SkipOneRoundCard("Skip one round");
-        cards = new ArrayList<>(5);
-        cards.add(earnThousandCard);
-        cards.add(skipOneRoundCard);
-        cards.add(moveThreeSpacesBackCard);
-        cards.add(loseThousandCard);
-
-        cards.add(moveThreeSpacesForwardCard);
-
-
+        ArrayList<Card> cards = makeStackOfCards();
         AtomicInteger propertyIndex = new AtomicInteger(0);
         AtomicInteger squareIndex = new AtomicInteger(0);
         Start start = new Start("Start", squareIndex.get());
-        Chance chance;
         squareIndex.incrementAndGet();
         squares.add(start);
 
         addProperties(propertyIndex, propertyIndex.get() + 2, squareIndex, prices, fees, propertyNames);
 
-        chance = new Chance("Chance", squareIndex.get(), cards);
+        Chance chance;
+        chance = new Chance("Chance", squareIndex.get(),cards);
         squares.add(chance);
         squareIndex.incrementAndGet();
         addProperties(propertyIndex, propertyIndex.get() + 2, squareIndex, prices, fees, propertyNames);
@@ -72,7 +58,7 @@ public class Board {
 
         addProperties(propertyIndex, propertyIndex.get() + 2, squareIndex, prices, fees, propertyNames);
 
-        chance = new Chance("Chance", squareIndex.get(), cards);
+        chance = new Chance("Chance", squareIndex.get(),cards);
         squares.add(chance);
         squareIndex.incrementAndGet();
 
@@ -84,7 +70,7 @@ public class Board {
 
         addProperties(propertyIndex, propertyIndex.get() + 2, squareIndex, prices, fees, propertyNames);
 
-        chance = new Chance("Chance", squareIndex.get(), cards);
+        chance = new Chance("Chance", squareIndex.get(),cards);
         squares.add(chance);
         squareIndex.incrementAndGet();
 
@@ -97,12 +83,28 @@ public class Board {
 
         addProperties(propertyIndex, propertyIndex.get() + 3, squareIndex, prices, fees, propertyNames);
 
-        chance = new Chance("Chance", squareIndex.get(), cards);
+        chance = new Chance("Chance", squareIndex.get(),cards);
         squares.add(chance);
         squareIndex.incrementAndGet();
 
         Property property = new Property(squareIndex.get(), propertyNames[propertyIndex.get()], prices[propertyIndex.get()], fees[propertyIndex.get()]);
         squares.add(property);
 
+    }
+
+    public ArrayList<Card> makeStackOfCards(){
+        EarnThousandCard earnThousandCard = new EarnThousandCard("Earn Thousand dollars ");
+        MoveThreeSpacesForwardCard moveThreeSpacesForwardCard = new MoveThreeSpacesForwardCard("Move three spaces forward ");
+        MoveThreeSpacesBackCard moveThreeSpacesBackCard = new MoveThreeSpacesBackCard("Move three spaces backward ");
+        LoseThousandCard loseThousandCard = new LoseThousandCard("Lose thousand dollars ");
+        SkipOneRoundCard skipOneRoundCard = new SkipOneRoundCard("Skip one round ");
+        ArrayList<Card> cardsToShuffle = new ArrayList<>(5);
+        cardsToShuffle.add(earnThousandCard);
+        cardsToShuffle.add(skipOneRoundCard);
+        cardsToShuffle.add(moveThreeSpacesBackCard);
+        cardsToShuffle.add(loseThousandCard);
+
+        cardsToShuffle.add(moveThreeSpacesForwardCard);
+        return cardsToShuffle;
     }
 }

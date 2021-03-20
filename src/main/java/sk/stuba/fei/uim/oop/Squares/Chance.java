@@ -1,21 +1,23 @@
 package sk.stuba.fei.uim.oop.Squares;
 
-import sk.stuba.fei.uim.oop.Cards.Card;
-import sk.stuba.fei.uim.oop.Player;
+import sk.stuba.fei.uim.oop.Cards.*;
+import sk.stuba.fei.uim.oop.other.Player;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 public class Chance extends Square {
 
     private ArrayList<Card> cards;
-    //private ArrayList<Card> usedCards;
 
-    public Chance(String name, int position, ArrayList<Card> cards) {
+    public Chance(String name, int position, ArrayList<Card> cards ) {
         super(name, position);
         this.cards = new ArrayList<>();
         this.cards.addAll(cards);
-        //usedCards = new ArrayList<>();
+
     }
+
 
 
     @Override

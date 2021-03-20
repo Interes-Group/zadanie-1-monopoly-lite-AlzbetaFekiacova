@@ -1,9 +1,10 @@
 package sk.stuba.fei.uim.oop.Cards;
 
-import sk.stuba.fei.uim.oop.Player;
+import sk.stuba.fei.uim.oop.other.Player;
 
 public class MoveThreeSpacesForwardCard extends Card{
     private int value;
+
     public MoveThreeSpacesForwardCard(String name){
         super(name);
         value = 3;

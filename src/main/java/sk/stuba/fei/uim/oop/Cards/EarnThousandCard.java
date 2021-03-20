@@ -1,6 +1,6 @@
 package sk.stuba.fei.uim.oop.Cards;
 
-import sk.stuba.fei.uim.oop.Player;
+import sk.stuba.fei.uim.oop.other.Player;
 
 public class EarnThousandCard extends Card{
     private int value;

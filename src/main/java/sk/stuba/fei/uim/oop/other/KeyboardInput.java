@@ -1,9 +1,11 @@
-package sk.stuba.fei.uim.oop;
+package sk.stuba.fei.uim.oop.other;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
+// Upravena trieda zo stranky predmetu.
+// Pouzila som triedu Zklavesnice, premenovala som ju na KeyboardInput, nech sa drzim jednotneho jazyka
 public class KeyboardInput {
 
     public static String readString(String displayToUser) {
@@ -73,5 +75,24 @@ public class KeyboardInput {
         }
         return player;
     }
+
+    public static void pressEnter(){
+        String displayToPlayer = "Press Enter please";
+
+        InputStreamReader inputStreamReader = new InputStreamReader(System.in);
+        try
+        {	System.out.println(displayToPlayer);
+            inputStreamReader.read();
+
+        }
+        catch (Exception e)
+        {
+            System.out.println("Press one more time");
+            pressEnter();
+        }
+
+    }
+
+
 
 }

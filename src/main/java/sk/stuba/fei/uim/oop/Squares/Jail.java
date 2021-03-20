@@ -1,14 +1,14 @@
 package sk.stuba.fei.uim.oop.Squares;
 
 
-import sk.stuba.fei.uim.oop.Player;
+import sk.stuba.fei.uim.oop.other.Player;
 
 import java.util.HashMap;
 import java.util.Map;
 
 
 public class Jail extends Square {
-    public Map<Player, Integer> jail;
+    private Map<Player, Integer> jail;
 
     public Jail(String name, int position) {
         super(name, position);

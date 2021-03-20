@@ -1,8 +1,8 @@
 package sk.stuba.fei.uim.oop.Squares;
 
 
-import sk.stuba.fei.uim.oop.KeyboardInput;
-import sk.stuba.fei.uim.oop.Player;
+import sk.stuba.fei.uim.oop.other.KeyboardInput;
+import sk.stuba.fei.uim.oop.other.Player;
 
 import java.util.ArrayList;
 

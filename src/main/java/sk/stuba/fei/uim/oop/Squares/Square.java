@@ -1,7 +1,7 @@
 package sk.stuba.fei.uim.oop.Squares;
 
 
-import sk.stuba.fei.uim.oop.Player;
+import sk.stuba.fei.uim.oop.other.Player;
 
 public class Square {
     private String name;
@@ -20,13 +20,6 @@ public class Square {
         this.name = name;
     }
 
-    public int getPosition() {
-        return position;
-    }
-
-    public void setPosition(int position) {
-        this.position = position;
-    }
 
     @Override
     public String toString() {

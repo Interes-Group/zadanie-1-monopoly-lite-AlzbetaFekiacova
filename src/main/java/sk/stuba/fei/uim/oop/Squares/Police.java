@@ -1,10 +1,10 @@
 package sk.stuba.fei.uim.oop.Squares;
 
 
-import sk.stuba.fei.uim.oop.Player;
+import sk.stuba.fei.uim.oop.other.Player;
 
 public class Police extends Square{
-    Jail jail;
+    private Jail jail;
     public Police(String name, int position, Jail jail) {
         super(name, position);
         this.jail = jail;

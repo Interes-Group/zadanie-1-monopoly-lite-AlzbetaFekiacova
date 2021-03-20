@@ -1,4 +1,4 @@
-package sk.stuba.fei.uim.oop;
+package sk.stuba.fei.uim.oop.other;
 
 import sk.stuba.fei.uim.oop.Squares.Jail;
 import sk.stuba.fei.uim.oop.Squares.Start;

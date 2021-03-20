@@ -1,4 +1,4 @@
-package sk.stuba.fei.uim.oop;
+package sk.stuba.fei.uim.oop.other;
 
 
 import sk.stuba.fei.uim.oop.Squares.Jail;
@@ -11,7 +11,7 @@ import java.util.Objects;
 public class Player {
     private String name;
     private int position;
-    int money;
+    private int money;
     boolean isImprisoned;
 
     ArrayList<Property> properties;
@@ -70,6 +70,7 @@ public class Player {
         System.out.println("You have " + money + "$");
         System.out.println("Your position is " + board.getSquares().get(position).getName() + " square");
         displayProperties();
+        KeyboardInput.pressEnter();
         System.out.println();
         if (!isImprisoned) {
             notImprisonedTurn(board);
@@ -77,6 +78,7 @@ public class Player {
             System.out.println("Sorry you are in prison, you have to wait");
             jail.oneRoundPassed(this);
         }
+        KeyboardInput.pressEnter();
     }
 
 
