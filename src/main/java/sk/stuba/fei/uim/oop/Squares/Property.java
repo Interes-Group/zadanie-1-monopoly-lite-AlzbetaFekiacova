@@ -4,16 +4,12 @@ import sk.stuba.fei.uim.oop.other.KeyboardInput;
 import sk.stuba.fei.uim.oop.other.Player;
 
 public class Property extends Square {
-    private int position;
-    private String name;
     private int price;
     private int fee;
     private Player owner;
 
     public Property(int position, String name, int price, int fee) {
         super(name, position);
-        this.position = position;
-        this.name = name;
         this.price = price;
         this.fee = fee;
         owner = null;
@@ -53,26 +49,10 @@ public class Property extends Square {
         } else if (this.owner.equals(player)) {
             System.out.println("You already own this property, well done!");
         } else {
-            System.out.println("You have to pay fee for stepping on someone else's property");
+            System.out.println("You have to pay a fee for stepping on someone else's property");
             System.out.println("The fee is " + fee + "$");
             player.spendMoney(fee);
         }
-    }
-
-    public int getPosition() {
-        return position;
-    }
-
-    public void setPosition(int position) {
-        this.position = position;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
 

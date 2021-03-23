@@ -4,20 +4,18 @@ import sk.stuba.fei.uim.oop.Cards.*;
 import sk.stuba.fei.uim.oop.other.Player;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
+
 
 public class Chance extends Square {
 
     private ArrayList<Card> cards;
 
-    public Chance(String name, int position, ArrayList<Card> cards ) {
+    public Chance(String name, int position, ArrayList<Card> cards) {
         super(name, position);
         this.cards = new ArrayList<>();
-        this.cards.addAll(cards);
+        this.cards = cards;
 
     }
-
 
 
     @Override
@@ -26,8 +24,8 @@ public class Chance extends Square {
         playCard(player);
     }
 
-    public void setCardsToBeUnused(){
-        for(Card card: cards){
+    public void setCardsToBeUnused() {
+        for (Card card : cards) {
             card.setHasBeenUsed(false);
         }
     }
@@ -41,20 +39,15 @@ public class Chance extends Square {
             }
         }
 
-        if(card != null){
-            card.setHasBeenUsed(true);
-            card.action(player);
-        }
-        else {
+        if (card == null) {
             setCardsToBeUnused();
             card = cards.get(0);
-            card.setHasBeenUsed(true);
-            card.action(player);
 
         }
+        card.setHasBeenUsed(true);
+        card.action(player);
 
-
-    }
+}
 
     @Override
     public String toString() {

@@ -5,6 +5,8 @@ import sk.stuba.fei.uim.oop.Cards.*;
 import sk.stuba.fei.uim.oop.Squares.*;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Board {
@@ -105,6 +107,7 @@ public class Board {
         cardsToShuffle.add(loseThousandCard);
 
         cardsToShuffle.add(moveThreeSpacesForwardCard);
+        Collections.shuffle(cardsToShuffle);
         return cardsToShuffle;
     }
 }
