@@ -88,17 +88,6 @@ public class KeyboardInput {
         }catch (Exception e){
             pressEnter();
         }
-/*
-        InputStreamReader inputStreamReader = new InputStreamReader(System.in);
-        try {
-            System.out.println(displayToPlayer);
-            inputStreamReader.read();
-
-        } catch (Exception e) {
-            System.out.println("Press one more time");
-            pressEnter();
-        }
-*/
     }
 
 
