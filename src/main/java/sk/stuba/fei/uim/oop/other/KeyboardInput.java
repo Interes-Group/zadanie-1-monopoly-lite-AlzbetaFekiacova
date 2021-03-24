@@ -61,7 +61,7 @@ public class KeyboardInput {
         return option;
     }
 
-    public static Player readPlayersName(int number, ArrayList<Player> players){
+    public static Player readPlayersName(int number, ArrayList<Player> players) {
         String name = KeyboardInput.readString(String.format("Enter name of player %d", number + 1));
         Player player = new Player(name);
         while (true) {
@@ -76,23 +76,20 @@ public class KeyboardInput {
         return player;
     }
 
-    public static void pressEnter(){
+    public static void pressEnter() {
         String displayToPlayer = "Press Enter please";
 
         InputStreamReader inputStreamReader = new InputStreamReader(System.in);
-        try
-        {	System.out.println(displayToPlayer);
+        try {
+            System.out.println(displayToPlayer);
             inputStreamReader.read();
 
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             System.out.println("Press one more time");
             pressEnter();
         }
 
     }
-
 
 
 }

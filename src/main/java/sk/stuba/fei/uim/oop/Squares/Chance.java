@@ -47,7 +47,7 @@ public class Chance extends Square {
         card.setHasBeenUsed(true);
         card.action(player);
 
-}
+    }
 
     @Override
     public String toString() {

@@ -50,7 +50,7 @@ public class Board {
         addProperties(propertyIndex, propertyIndex.get() + 2, squareIndex, prices, fees, propertyNames);
 
         Chance chance;
-        chance = new Chance("Chance", squareIndex.get(),cards);
+        chance = new Chance("Chance", squareIndex.get(), cards);
         squares.add(chance);
         squareIndex.incrementAndGet();
         addProperties(propertyIndex, propertyIndex.get() + 2, squareIndex, prices, fees, propertyNames);
@@ -60,7 +60,7 @@ public class Board {
 
         addProperties(propertyIndex, propertyIndex.get() + 2, squareIndex, prices, fees, propertyNames);
 
-        chance = new Chance("Chance", squareIndex.get(),cards);
+        chance = new Chance("Chance", squareIndex.get(), cards);
         squares.add(chance);
         squareIndex.incrementAndGet();
 
@@ -72,7 +72,7 @@ public class Board {
 
         addProperties(propertyIndex, propertyIndex.get() + 2, squareIndex, prices, fees, propertyNames);
 
-        chance = new Chance("Chance", squareIndex.get(),cards);
+        chance = new Chance("Chance", squareIndex.get(), cards);
         squares.add(chance);
         squareIndex.incrementAndGet();
 
@@ -85,7 +85,7 @@ public class Board {
 
         addProperties(propertyIndex, propertyIndex.get() + 3, squareIndex, prices, fees, propertyNames);
 
-        chance = new Chance("Chance", squareIndex.get(),cards);
+        chance = new Chance("Chance", squareIndex.get(), cards);
         squares.add(chance);
         squareIndex.incrementAndGet();
 
@@ -94,7 +94,7 @@ public class Board {
 
     }
 
-    public ArrayList<Card> makeStackOfCards(){
+    public ArrayList<Card> makeStackOfCards() {
         EarnThousandCard earnThousandCard = new EarnThousandCard("Earn Thousand dollars ");
         MoveThreeSpacesForwardCard moveThreeSpacesForwardCard = new MoveThreeSpacesForwardCard("Move three spaces forward ");
         MoveThreeSpacesBackCard moveThreeSpacesBackCard = new MoveThreeSpacesBackCard("Move three spaces backward ");
