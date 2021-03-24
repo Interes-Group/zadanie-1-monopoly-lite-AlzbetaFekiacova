@@ -13,6 +13,7 @@ public class Police extends Square{
     @Override
     public void action(Player player) {
         super.action(player);
+        player.setPosition(jail.getPosition());
         System.out.println("You are going into prison for three rounds");
         jail.addPlayer(player);
     }

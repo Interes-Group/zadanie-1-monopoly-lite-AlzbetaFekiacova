@@ -20,6 +20,9 @@ public class Square {
         this.name = name;
     }
 
+    public int getPosition() {
+        return position;
+    }
 
     @Override
     public String toString() {

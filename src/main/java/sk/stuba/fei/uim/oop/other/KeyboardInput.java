@@ -3,6 +3,7 @@ package sk.stuba.fei.uim.oop.other;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 // Upravena trieda zo stranky predmetu.
 // Pouzila som triedu Zklavesnice, premenovala som ju na KeyboardInput, nech sa drzim jednotneho jazyka
@@ -77,8 +78,17 @@ public class KeyboardInput {
     }
 
     public static void pressEnter() {
+
         String displayToPlayer = "Press Enter please";
 
+        try {
+            System.out.println(displayToPlayer);
+            Scanner scanner = new Scanner(System.in);
+            scanner.nextLine();
+        }catch (Exception e){
+            pressEnter();
+        }
+/*
         InputStreamReader inputStreamReader = new InputStreamReader(System.in);
         try {
             System.out.println(displayToPlayer);
@@ -88,7 +98,7 @@ public class KeyboardInput {
             System.out.println("Press one more time");
             pressEnter();
         }
-
+*/
     }
 
 
