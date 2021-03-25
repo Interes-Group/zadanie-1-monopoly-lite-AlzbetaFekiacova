@@ -37,7 +37,7 @@ public class KeyboardInput {
                     System.out.println("Number of players must be at least equal to two and less than 11");
                     numberOfPlayers = KeyboardInput.readNumberOfPlayers();
                 }
-                else if(numberOfPlayers > 11){
+                else if(numberOfPlayers >= 11){
                     System.out.println("Maximum number of players is 11");
                     numberOfPlayers = KeyboardInput.readNumberOfPlayers();
                 }
