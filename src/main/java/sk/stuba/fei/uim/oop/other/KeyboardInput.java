@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 // Upravena trieda zo stranky predmetu.
-// Pouzila som triedu Zklavesnice, premenovala som ju na KeyboardInput, nech sa drzim jednotneho jazyka
+// Pouzila som triedu Zklavesnice, premenovala som ju na KeyboardInput, nech sa drzim jednotneho jazyka a upravila som si metody tak, aby mi to vyhovovalo
 public class KeyboardInput {
 
     public static String readString(String displayToUser) {
@@ -29,12 +29,21 @@ public class KeyboardInput {
         String string;
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         try {
-            System.out.println("Enter number of players (Positive number greater than 1)");
+            System.out.println("Enter number of players (Positive number greater than 1 and less than 11)");
             string = bufferedReader.readLine();
             numberOfPlayers = Integer.parseInt(string);
-            while (numberOfPlayers <= 1) {
-                System.out.println("Number of players must be at least equal to two");
-                numberOfPlayers = KeyboardInput.readNumberOfPlayers();
+            while (true) {
+                if (numberOfPlayers < 2 ) {
+                    System.out.println("Number of players must be at least equal to two and less than 11");
+                    numberOfPlayers = KeyboardInput.readNumberOfPlayers();
+                }
+                else if(numberOfPlayers > 11){
+                    System.out.println("Maximum number of players is 11");
+                    numberOfPlayers = KeyboardInput.readNumberOfPlayers();
+                }
+                else{
+                    break;
+                }
             }
         } catch (Exception e) {
             numberOfPlayers = KeyboardInput.readNumberOfPlayers();
